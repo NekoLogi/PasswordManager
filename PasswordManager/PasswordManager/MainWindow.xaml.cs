@@ -87,6 +87,10 @@ namespace PasswordManager
         {
             if (Manager.EditItem(CreateItem()))
             {
+                Edit_TextBox_Website.Text = "";
+                Edit_TextBox_Username.Text = "";
+                Edit_TextBox_Password.Text = "";
+
                 Window_Initialized(null, null);
                 Main_Manager.IsSelected = true;
             }
@@ -97,7 +101,14 @@ namespace PasswordManager
         private void Create_Button_Account_Click(object sender, RoutedEventArgs e)
         {
             if (Manager.CreateItem(new Item { NAME = Create_TextBox_Username.Text, WEBSITE = Create_TextBox_Website.Text, PASSWORD = Create_TextBox_Password.Text }))
+            {
+                Create_TextBox_Website.Text = "";
+                Create_TextBox_Username.Text = "";
+                Create_TextBox_Password.Text = "";
+
+                Window_Initialized(null, null);
                 Main_Manager.IsSelected = true;
+            }
             else
                 MessageBox.Show("Failed to add account!\nCheck your input.");
         }
