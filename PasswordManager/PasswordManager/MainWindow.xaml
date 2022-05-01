@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordManager"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Password Manager" Height="450" Width="800" Initialized="Window_Initialized">
     <Grid>
         <TabControl Name="Main_TabControl">
@@ -27,7 +28,8 @@
                                   CanUserAddRows="False"
                                   CanUserResizeRows="False"
                                   Opacity="0.7"
-                                  BorderThickness="0" HeadersVisibility="Column">
+                                  BorderThickness="0" HeadersVisibility="Column"
+                                  Height="335">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Website" Width="200" Binding="{Binding WEBSITE}"/>
                                 <DataGridTextColumn Header="Name" Width="250" Binding="{Binding NAME}"/>
