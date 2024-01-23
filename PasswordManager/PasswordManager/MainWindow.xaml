@@ -1,0 +1,163 @@
+﻿<Window
+    x:Class="PasswordManager.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PasswordManager"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Password Manager"
+    Width="800"
+    Height="450"
+    Initialized="Window_Initialized"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+    <Grid>
+        <TabControl Name="Main_TabControl">
+            <TabItem
+                Name="Main_Manager"
+                Header="Manager"
+                IsSelected="True">
+                <Grid>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+                            <Label Content="Suche:" />
+                            <TextBox
+                                Name="Manager_TextBox_Search"
+                                Width="300"
+                                VerticalContentAlignment="Center"
+                                TextChanged="Manager_TextBox_Search_TextChanged" />
+                        </StackPanel>
+                        <DataGrid
+                            Name="Manager_Datagrid_Website"
+                            Height="335"
+                            BorderThickness="0"
+                            CanUserAddRows="False"
+                            CanUserResizeRows="False"
+                            GridLinesVisibility="Horizontal"
+                            HeadersVisibility="Column"
+                            IsReadOnly="True"
+                            Opacity="0.7"
+                            SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="200"
+                                    Binding="{Binding Website}"
+                                    Header="Website" />
+                                <DataGridTextColumn
+                                    Width="250"
+                                    Binding="{Binding Name}"
+                                    Header="Name" />
+                                <DataGridTextColumn
+                                    Width="240"
+                                    Binding="{Binding Password}"
+                                    Header="Password" />
+                            </DataGrid.Columns>
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem
+                                        x:Name="EditContextMenu"
+                                        Click="ContextMenuEdit_Click"
+                                        Header="Edit" />
+                                    <Separator />
+                                    <MenuItem
+                                        x:Name="ContextMenu_Copy_Name"
+                                        Click="ContextMenuName_Click"
+                                        Header="Copy Name" />
+                                    <MenuItem
+                                        x:Name="ContextMenu_Copy_Password"
+                                        Click="ContextMenuPassword_Click"
+                                        Header="Copy Password" />
+                                    <Separator />
+                                    <MenuItem
+                                        x:Name="DeleteContextMenu"
+                                        Click="ContextMenuDelete_Click"
+                                        Header="Delete">
+                                        Yes
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                        </DataGrid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Name="Main_Account" Header="Account">
+                <Grid>
+                    <StackPanel Orientation="Vertical">
+                        <GroupBox Margin="0,0,0,30" Header="Create">
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                                        <Label Content="Website:" />
+                                        <TextBox
+                                            Name="Create_TextBox_Website"
+                                            Width="300"
+                                            VerticalContentAlignment="Center" />
+                                        <Label Content="Username:" />
+                                        <TextBox
+                                            Name="Create_TextBox_Username"
+                                            Width="300"
+                                            VerticalContentAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Password:" />
+                                        <TextBox
+                                            Name="Create_TextBox_Password"
+                                            Width="293"
+                                            VerticalContentAlignment="Center" />
+                                        <ComboBox
+                                            Name="Create_ComboBox_Length"
+                                            Width="50"
+                                            Margin="5,0,0,0" />
+                                        <Button
+                                            Name="Create_Button_Password"
+                                            Width="100"
+                                            Margin="10,0,0,0"
+                                            Click="Create_Button_Password_Click"
+                                            Content="Create Password" />
+                                        <Button
+                                            Name="Create_Button_Account"
+                                            Width="100"
+                                            Margin="100,0,0,0"
+                                            Click="Create_Button_Account_Click"
+                                            Content="Create" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="Edit">
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                                        <Label Content="Website:" />
+                                        <TextBox
+                                            Name="Edit_TextBox_Website"
+                                            Width="300"
+                                            VerticalContentAlignment="Center" />
+                                        <Label Content="Username:" />
+                                        <TextBox
+                                            Name="Edit_TextBox_Username"
+                                            Width="300"
+                                            VerticalContentAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Password:" />
+                                        <TextBox
+                                            Name="Edit_TextBox_Password"
+                                            Width="293"
+                                            VerticalContentAlignment="Center" />
+                                        <Button
+                                            Name="Edit_Button_Account"
+                                            Width="100"
+                                            Margin="265,0,0,0"
+                                            Click="Edit_Button_Account_Click"
+                                            Content="Edit" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
